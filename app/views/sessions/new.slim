@@ -1,0 +1,12 @@
+.container
+  h1
+    = 'Sign in'
+  = simple_form_for :user, url: sessions_path do |f|
+    .fields
+      .row
+        .col-lg-3
+          .field
+            = f.input :email, placeholder: 'user@example.com'
+            = f.input :password, placeholder: 'StRoNgPaSsWoRd'
+    .actions
+      = f.submit 'Login', class: 'btn btn-sm btn-success'

@@ -16,3 +16,11 @@ import "bootstrap"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).ready(function(){
+  setTimeout(function() {
+    $('#notice-wrapper').fadeOut('slow', function() {
+      $this.remove();
+    });
+  }, 3000 );
+});
