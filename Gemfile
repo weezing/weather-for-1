@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'faker'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
@@ -15,7 +16,12 @@ gem 'slim'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
+  gem 'better_errors'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
@@ -27,7 +33,9 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
 
