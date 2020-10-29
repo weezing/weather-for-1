@@ -1,0 +1,9 @@
+nav.navbar.navbar-dark.bg-warning
+  .container-fluid
+    .float-md-left
+      = link_to 'Weather Forecast App', root_path
+    .float-md-right
+      - if current_user
+        = link_to 'Logout', logout_path, method: :delete
+      - else
+        = link_to 'Login', login_path
