@@ -1,0 +1,32 @@
+.container
+  h1.float-left
+    = "Your cities (#{@cities.total_count}):"
+  = link_to 'Add city', '#', class: 'btn btn-sm btn-success float-right'
+
+  .clearfix
+
+  .row
+    table.table.table-hover
+      thead
+        tr
+          th
+            = 'City'
+          th
+            = 'Latitude'
+          th
+            = 'Longitude'
+          th
+            = 'Actions'
+      tbody
+        - @cities.each do |city|
+          tr
+            td scope='row'
+              = city.name
+            td
+              = city.latitude
+            td
+              = city.longitude
+            td
+              = link_to 'Show forecast', '#', class: 'btn btn-sm btn-primary'
+              = link_to 'Remove city', '#', class: 'btn btn-sm btn-danger'
+    = paginate @cities
