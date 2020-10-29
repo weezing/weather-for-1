@@ -1,0 +1,15 @@
+.container
+  .row
+    h1= 'Sign up'
+    hr
+  = simple_form_for @form, as: :user_form, url: users_path, method: :post do |f|
+    .fields
+      .row
+        .col-lg-3
+          .field
+            = f.input :email
+            = f.input :password
+            = f.input :password_confirmation
+          .actions
+            = f.submit 'Submit', class: 'btn btn-success'
+            = link_to 'Back', :back

@@ -1,6 +1,7 @@
 .container
-  h1
-    = 'Sign in'
+  .row
+    h1= 'Login'
+    hr
   = simple_form_for :user, url: sessions_path do |f|
     .fields
       .row
@@ -9,4 +10,5 @@
             = f.input :email, placeholder: 'user@example.com'
             = f.input :password, placeholder: 'StRoNgPaSsWoRd'
     .actions
-      = f.submit 'Login', class: 'btn btn-sm btn-success'
+      = f.submit 'Login', class: 'btn btn-success'
+      = link_to 'Back', :back
