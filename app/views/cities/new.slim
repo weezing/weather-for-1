@@ -1,0 +1,13 @@
+.container
+  .row
+    h1= 'Add new City'
+    hr
+  = simple_form_for @form, as: :city_form, url: cities_path, method: :post do |f|
+    .fields
+      .row
+        .col-lg-3
+          .field
+            = f.input :name
+          .actions
+            = f.submit 'Submit', class: 'btn btn-success'
+            = link_to 'Back', :back

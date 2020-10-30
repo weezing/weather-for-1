@@ -1,7 +1,7 @@
 .container
   h1.float-left
     = "Your cities (#{@cities.total_count}):"
-  = link_to 'Add city', '#', class: 'btn btn-sm btn-success float-right'
+  = link_to 'Add city', new_city_path, class: 'btn btn-sm btn-success float-right'
 
   .clearfix
 
@@ -23,9 +23,9 @@
             td scope='row'
               = city.name
             td
-              = city.latitude
+              = city.latitude.round(3)
             td
-              = city.longitude
+              = city.longitude.round(3)
             td
               = link_to 'Show forecast', '#', class: 'btn btn-sm btn-primary'
               = link_to 'Remove city', city_path(city),

@@ -1,13 +1,18 @@
 describe CreateUserForm do
   it 'valid' do
+    expected_attributes = {
+      email: 'user@example.com',
+      password: 'password'
+    }
     params = {
-      email: Faker::Internet.safe_email,
+      email: 'user@example.com',
       password: 'password',
       password_confirmation: 'password'
     }
+    form = described_class.new(params)
 
-    form = CreateUserForm.new(params)
     expect(form.valid?).to eq true
+    expect(form.attributes).to eq(expected_attributes)
   end
 
   context 'invalid' do
@@ -17,7 +22,7 @@ describe CreateUserForm do
         password: 'password',
         password_confirmation: 'password'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:email]).to include("can't be blank")
@@ -29,7 +34,7 @@ describe CreateUserForm do
         password: 'password',
         password_confirmation: 'password'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:email]).to include('is invalid')
@@ -43,7 +48,7 @@ describe CreateUserForm do
         password: 'password',
         password_confirmation: 'password'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:email]).to include('has already been taken')
@@ -55,7 +60,7 @@ describe CreateUserForm do
         password: '',
         password_confirmation: 'password'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:password]).to include("can't be blank")
@@ -67,7 +72,7 @@ describe CreateUserForm do
         password: 'pass',
         password_confirmation: 'pass'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:password]).to include('is too short (minimum is 6 characters)')
@@ -79,7 +84,7 @@ describe CreateUserForm do
         password: 'password',
         password_confirmation: ''
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:password_confirmation]).to include("can't be blank")
@@ -91,7 +96,7 @@ describe CreateUserForm do
         password: 'password',
         password_confirmation: 'wrongpassword'
       }
-      form = CreateUserForm.new(params)
+      form = described_class.new(params)
 
       expect(form.valid?).to eq false
       expect(form.errors[:password_confirmation]).to include("doesn't match Password")
