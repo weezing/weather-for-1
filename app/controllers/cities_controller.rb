@@ -1,10 +1,18 @@
 class CitiesController < ApplicationController
   before_action :authenticate_user
-  before_action :find_city, only: [:destroy]
+  before_action :find_city, only: [:show, :destroy]
+  before_action :day_param_validation, only: :show
 
   def index
     @cities = current_user.cities.order(name: :asc)
                                  .page(params[:page])
+  end
+
+  def show
+    forecast_data = WeatherDataQuery.new(@city).results
+    day = params[:day].to_i || 0
+
+    @forecast = ForecastPresenter.new(forecast_data, day)
   end
 
   def new
@@ -46,5 +54,12 @@ class CitiesController < ApplicationController
 
   def city_form_params
     params.require(:city_form).permit(:name)
+  end
+
+  def day_param_validation
+    if params[:day].to_i < 0 || params[:day].to_i > 2
+      redirect_to city_path(@city),
+                  alert: 'Only current, tomorrow, and day after tomorrow forecasts are available'
+    end
   end
 end

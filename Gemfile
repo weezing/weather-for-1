@@ -7,6 +7,7 @@ gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faker'
 gem 'geocoder'
+gem 'httparty'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'

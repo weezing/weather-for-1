@@ -1,0 +1,36 @@
+.container
+  h1.float-left
+    = "Forecast for #{@city.name}:"
+
+  .clearfix
+
+  = form_tag(city_path(@city), method: :get)
+    = select_tag :day, options_for_select([['current', 0], ['tomorrow', 1], ['day after tomorrow', 2]], params[:day]), onchange: 'this.form.submit()'
+
+  .row
+    table.table.table-hover
+      tr
+        th
+          = 'Temperature (Celsius):'
+        td
+          = @forecast.temperature
+      tr
+        th
+          = 'Pressure (hPa):'
+        td
+          = @forecast.pressure
+      tr
+        th
+          = 'Humidity (%):'
+        td
+          = @forecast.humidity
+      tr
+        th
+          = 'Clouds (%):'
+        td
+          = @forecast.clouds
+      tr
+        th
+          = 'Summary:'
+        td
+          = @forecast.summary
