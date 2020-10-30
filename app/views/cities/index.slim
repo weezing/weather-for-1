@@ -30,6 +30,5 @@
               = link_to 'Show forecast', city_path(city), class: 'btn btn-sm btn-primary'
               = link_to 'Remove city', city_path(city),
                                        method: :delete,
-                                       data: { confirm: 'Are you sure?' },
                                        class: 'btn btn-sm btn-danger'
     = paginate @cities

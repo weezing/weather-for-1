@@ -15,6 +15,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    service = DestroyUserService.new(current_user)
+
+    if service.call
+      session[:user_id] = nil
+      redirect_to root_path, notice: 'Account removed successfully'
+    else
+      redirect_to cities_path, alert: 'Something went wrong, try again'
+    end
+  end
+
   private
 
   def user_form_params

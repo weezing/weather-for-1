@@ -5,6 +5,7 @@ nav.navbar.navbar-dark.bg-warning
     .float-md-right
       - if current_user
         = link_to 'Logout', logout_path, method: :delete
+        = link_to 'Delete account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }
       - else
         = link_to 'Sign up', new_user_path, class: 'btn btn-sm'
-        = link_to 'Login', login_path, class: 'btn btn-sm'
+        = link_to 'Sign in', login_path, class: 'btn btn-sm'

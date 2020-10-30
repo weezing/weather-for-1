@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Welcome to Weather Forecast App'
+      redirect_to root_path, notice: 'Logged in successfully'
     else
       redirect_to login_path, alert: 'Wrong password, try again!'
     end
